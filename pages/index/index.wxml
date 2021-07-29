@@ -1,0 +1,38 @@
+<!--index.wxml-->
+<!--通过sta来给输入框添加选中样式-->
+<view class="srk" wx:if="{{type != 'update'}}">
+	<text style="display:flex; width: 25%; height: 3.5vh; padding-top:1vh; padding-bottom:1vh;">车牌号</text>
+	<text style="font-size: 1.5em; color: #e5e5e5;	">|</text>
+	<input class="inpz {{sta == 1?'inpz2':''}}" id="1" bindtap="inpzm" disabled value="{{text1}}"/>
+	<input class="inpz {{sta == 2?'inpz2':''}}" id="2" bindtap="inpzm" disabled value="{{text2}}"/>
+	<input class="inpz {{sta == 3?'inpz2':''}}" id="3" bindtap="inpzm" disabled value="{{text3}}"/>
+	<input class="inpz {{sta == 4?'inpz2':''}}" id="4" bindtap="inpzm" disabled value="{{text4}}"/>
+	<input class="inpz {{sta == 5?'inpz2':''}}" id="5" bindtap="inpzm" disabled value="{{text5}}"/>
+	<input class="inpz {{sta == 6?'inpz2':''}}" id="6" bindtap="inpzm" disabled value="{{text6}}"/>
+	<input class="inpz {{sta == 7?'inpz2':''}}" id="7" bindtap="inpzm" disabled value="{{text7}}"/>
+	<input hidden="{{xin}}" class="inpz {{sta == 8?'inpz2':''}}" id="8" bindtap="inpzm" disabled value="{{text8}}" placeholder="新"/>
+</view>
+<button class="tj" bindtap="submit">提交</button>
+<!--当sta=1时，显示文字键盘，sta通过id获取-->
+<view class="bottom2 {{sta == 1 ? 'bot' : ''}}">
+	<view class="flexy"><button class="item" wx:for="{{licensePlate1}}" wx:key="index" bindtap="zim" data-text="{{item.name}}">{{item.name}}</button></view>
+	<view class="flexy"><button class="item" wx:for="{{licensePlate2}}" wx:key="index" bindtap="zim" data-text="{{item.name}}">{{item.name}}</button></view>
+	<view class="flexy"><button class="item" wx:for="{{licensePlate3}}" wx:key="index" bindtap="zim" data-text="{{item.name}}">{{item.name}}</button></view>
+	<view class="flexy">
+		<button class="item" wx:for="{{licensePlate4}}" wx:key="index" bindtap="zim" data-text="{{item.name}}">{{item.name}}</button>
+		<button class="item2" bindtap="del"><image src="/images/icon/select.png" mode="widthFix" style="width:46rpx"/></button>
+	</view>
+</view>
+<!--反之当sta=2，3，4，5，6，7，8时显示数字字母键盘-->
+<view class="bottom2 {{sta == 2||sta == 3||sta == 4||sta == 5||sta == 6||sta == 7||sta == 8 ? 'bot' : ''}} bottom3" >
+	<view class="flexy"><button class="item" wx:for="{{numx}}" wx:key="index" bindtap="zim2" data-text="{{item.name}}">{{item.name}}</button></view>
+	<view class="flexy"><button class="item" wx:for="{{zm1}}" wx:key="index" bindtap="zim2" data-text="{{item.name}}">{{item.name}}</button></view>
+	<view class="flexy"><button class="item" wx:for="{{zm2}}" wx:key="index" bindtap="zim2" data-text="{{item.name}}">{{item.name}}</button></view>
+	<view class="flexy">
+		<button class="item" wx:for="{{zm3}}" wx:key="index" bindtap="zim2" data-text="{{item.name}}">{{item.name}}</button>
+		<button class="item3" hidden="{{!xin}}" bindtap="xin"><view style="min-width:74rpx">{{'新能源'}}</view></button>
+		<button class="item3" hidden="{{xin}}" bindtap="xin"><view style="min-width:74rpx">{{'非新'}}</view></button>
+		<button class="item2" bindtap="del"><image src="/images/icon/select.png" mode="widthFix" style="width:46rpx;transform: rotate(90deg);"/></button>
+	</view>
+</view>
+
